@@ -14,6 +14,6 @@ public class Controller {
     }
 
     public void processUser() {
-
+        view.printMessage(View.INPUT_INT_DATA, 0, 100);
     }
 }
