@@ -19,24 +19,30 @@ public class Controller {
         Scanner sc = new Scanner(System.in);
 
         model.setCurrentNumber(inputValueWithScanner(sc, model.getCurrentMinNumber(), model.getCurrentMaxNumber()));
+        model.addPlayersAttempt();
         while (! model.playerWin()) {
             if(model.unknownNumberMoreThanCurrent()) {
                 view.printMessage(View.GREATER_THAN);
-                model.setCurrentMinNumber(model.getCurrentNumber());
+                model.setCurrentMinNumber(model.getCurrentNumber() + 1);
             } else {
                 view.printMessage(View.LESS_THAN);
-                model.setCurrentMaxNumber(model.getCurrentNumber());
+                model.setCurrentMaxNumber(model.getCurrentNumber() - 1);
             }
             model.setCurrentNumber(inputValueWithScanner(sc, model.getCurrentMinNumber(), model.getCurrentMaxNumber()));
+            model.addPlayersAttempt();
         }
         view.printMessage(View.CORRECT_NUMBER);
+        view.printMessageWithTwoNumbers(View.START_INTERVAL, model.getMIN_RAND(), model.getMAX_RAND());
+        view.printMessageWithOneNumber(View.UNKNOWN_NUMBER, model.getUnknownNumber());
+        view.printMessageWithOneNumber(View.NUMBER_OF_ATTEMPTS, model.numberOfAttempts());
+        view.printMessage(View.ATTEMPTS + model.printPlayersAttempts());
     }
 
     public int inputValueWithScanner(Scanner sc, int min, int max) {
 
         int inputValue;
         while(true) {
-            view.printMessageAboutInput(View.INPUT_INT_DATA, min, max);
+            view.printMessageWithTwoNumbers(View.INPUT_INT_DATA, min, max);
             if(sc.hasNextInt()) {
                 inputValue = sc.nextInt();
                 if(inputValue < min || inputValue > max) {

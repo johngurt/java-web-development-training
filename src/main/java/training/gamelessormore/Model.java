@@ -1,5 +1,6 @@
 package training.gamelessormore;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -15,6 +16,8 @@ public class Model {
 
     private int unknownNumber;
     private int currentNumber;
+
+    private ArrayList<Integer> playersAttempts = new ArrayList<Integer>();
 
     Random rand = new Random();
 
@@ -72,5 +75,21 @@ public class Model {
 
     public int getCurrentNumber() {
         return currentNumber;
+    }
+
+    public int getUnknownNumber() {
+        return unknownNumber;
+    }
+
+    public void addPlayersAttempt() {
+        playersAttempts.add(currentNumber);
+    }
+
+    public String printPlayersAttempts() {
+        return playersAttempts.toString();
+    }
+
+    public int numberOfAttempts() {
+        return playersAttempts.size();
     }
 }
