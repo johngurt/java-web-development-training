@@ -14,6 +14,7 @@ public class Model {
     private int currentMaxNumber;
 
     private int unknownNumber;
+    private int currentNumber;
 
     Random rand = new Random();
 
@@ -31,6 +32,14 @@ public class Model {
         currentMinNumber = MIN_RAND;
         currentMaxNumber = MAX_RAND;
         unknownNumber = rand.nextInt(MAX_RAND - MIN_RAND + 1) + MIN_RAND;
+    }
+
+    public boolean playerWin() {
+        return currentNumber == unknownNumber;
+    }
+
+    public boolean unknownNumberMoreThanCurrent() {
+        return unknownNumber > currentNumber;
     }
 
     public int getMAX_RAND() {
@@ -55,5 +64,13 @@ public class Model {
 
     public void setCurrentMinNumber(int currentMinNumber) {
         this.currentMinNumber = currentMinNumber;
+    }
+
+    public void setCurrentNumber(int currentNumber) {
+        this.currentNumber = currentNumber;
+    }
+
+    public int getCurrentNumber() {
+        return currentNumber;
     }
 }
