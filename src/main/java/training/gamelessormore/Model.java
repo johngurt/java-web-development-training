@@ -8,19 +8,33 @@ import java.util.Random;
  */
 public class Model {
 
+    /**
+     * initial interval [MIN_RAND, MAX_RAND]
+     */
     private final int MIN_RAND;
     private final int MAX_RAND;
 
+    /**
+     * variables
+     */
+    //ends of interval that changes when you play
     private int currentMinNumber;
     private int currentMaxNumber;
-
+    //number that program makes
     private int unknownNumber;
+    //number that player enters
     private int currentNumber;
 
+    /**
+     * list of numbers that players enters
+     */
     private ArrayList<Integer> playersAttempts = new ArrayList<Integer>();
 
     Random rand = new Random();
 
+    /**
+     * default constructor
+     */
     Model() {
         MIN_RAND = 0;
         MAX_RAND = 100;
@@ -29,6 +43,11 @@ public class Model {
         unknownNumber = rand.nextInt(101);
     }
 
+    /**
+     * constructor with specified boundaries
+     * @param MIN_RAND bottom boundary
+     * @param MAX_RAND upper boundary
+     */
     Model(int MIN_RAND, int MAX_RAND) {
         this.MIN_RAND = MIN_RAND;
         this.MAX_RAND = MAX_RAND;
@@ -37,13 +56,25 @@ public class Model {
         unknownNumber = rand.nextInt(MAX_RAND - MIN_RAND + 1) + MIN_RAND;
     }
 
+    /**
+     * method that return true if player guesses unknown number
+     * @return boolean value that is true when player guesses unknown number
+     */
     public boolean playerWin() {
         return currentNumber == unknownNumber;
     }
 
+    /**
+     * method that return true if unknown number is greater than player's number
+     * @return boolean value that is true when unknown number is greater than number that player enters
+     */
     public boolean unknownNumberMoreThanCurrent() {
         return unknownNumber > currentNumber;
     }
+
+    /**
+     * getters and setters
+     */
 
     public int getMAX_RAND() {
         return MAX_RAND;
@@ -81,6 +112,9 @@ public class Model {
         return unknownNumber;
     }
 
+    /**
+     * method that save players attempts
+     */
     public void addPlayersAttempt() {
         playersAttempts.add(currentNumber);
     }

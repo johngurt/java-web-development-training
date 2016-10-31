@@ -5,6 +5,7 @@ package training.gamelessormore;
  */
 public class View {
 
+    //String constants
     public static final String INPUT_INT_DATA = "Please input integer value from %s to %s";
     public static final String WRONG_INPUT = "Wrong input!";
     public static final String GREATER_THAN = "Unknown number is more";
@@ -14,6 +15,7 @@ public class View {
     public static final String UNKNOWN_NUMBER = "Unknown number was %s";
     public static final String ATTEMPTS = "They were: ";
     public static final String START_INTERVAL = "Program could make a number between %s and %s";
+
 
     public void printMessageWithTwoNumbers(String message, int min, int max) {
         System.out.printf(message, min, max);

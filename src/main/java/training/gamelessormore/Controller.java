@@ -15,6 +15,7 @@ public class Controller {
         this.view = view;
     }
 
+    //work method
     public void processUser() {
         Scanner sc = new Scanner(System.in);
 
@@ -38,6 +39,7 @@ public class Controller {
         view.printMessage(View.ATTEMPTS + model.printPlayersAttempts());
     }
 
+    //Utility method that checks input data
     public int inputValueWithScanner(Scanner sc, int min, int max) {
 
         int inputValue;
