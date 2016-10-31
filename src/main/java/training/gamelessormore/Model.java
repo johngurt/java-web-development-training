@@ -45,8 +45,8 @@ public class Model {
 
     /**
      * constructor with specified boundaries
-     * @param MIN_RAND bottom boundary
-     * @param MAX_RAND upper boundary
+     * @param MIN_RAND left boundary
+     * @param MAX_RAND right boundary
      */
     Model(int MIN_RAND, int MAX_RAND) {
         this.MIN_RAND = MIN_RAND;
@@ -70,6 +70,15 @@ public class Model {
      */
     public boolean unknownNumberMoreThanCurrent() {
         return unknownNumber > currentNumber;
+    }
+
+    /**
+     *
+     * @param currentNumber value that player inputs
+     * @return boolean value that is true when number that players enters is not in correct interval
+     */
+    public boolean isOutOfBoundary(int currentNumber) {
+        return (currentNumber > currentMaxNumber) || (currentNumber < currentMinNumber);
     }
 
     /**

@@ -47,7 +47,7 @@ public class Controller {
             view.printMessageWithTwoNumbers(View.INPUT_INT_DATA, min, max);
             if(sc.hasNextInt()) {
                 inputValue = sc.nextInt();
-                if(inputValue < min || inputValue > max) {
+                if(model.isOutOfBoundary(inputValue)) {
                     view.printMessage(View.WRONG_INPUT);
                 } else {
                     break;
