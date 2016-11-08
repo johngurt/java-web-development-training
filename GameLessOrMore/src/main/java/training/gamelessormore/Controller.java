@@ -3,7 +3,9 @@ package training.gamelessormore;
 import java.util.Scanner;
 
 /**
- * Created by gurt on 10/30/16.
+ *
+ *
+ * @author Hurt Yevhenii
  */
 public class Controller {
 

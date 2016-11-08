@@ -1,7 +1,9 @@
 package training.gamelessormore;
 
 /**
- * Created by gurt on 10/30/16.
+ * Class that is entry point to programm
+ *
+ * @author Hurt Yevhenii
  */
 public class Main {
 

@@ -1,7 +1,7 @@
 package training.gamelessormore;
 
 /**
- * Created by gurt on 10/30/16.
+ * @author Hurt Yevhenii
  */
 public class View {
 
@@ -17,22 +17,35 @@ public class View {
     public static final String START_INTERVAL = "Program could make a number between %s and %s";
 
     /**
-     * This method used to write str
+     * Prints string with two numbers that passed as arguments
+     * and then terminated the line
      *
-     * @param message
-     * @param first
-     * @param second
+     * @param message string to be printed
+     * @param first first number that will be substituted to string
+     * @param second second number that will be substituted to string
      */
     public void printMessageWithTwoNumbers(String message, int first, int second) {
         System.out.printf(message, first, second);
         System.out.println();
     }
 
+    /**
+     * Prints string with one number that passed as arguments
+     * and then terminated the line
+     *
+     * @param message string to be printed
+     * @param num number that will be substituted to string
+     */
     public void printMessageWithOneNumber(String message, int num) {
         System.out.printf(message, num);
         System.out.println();
     }
 
+    /**
+     * Prints string and then terminated the line
+     *
+     * @param message string to be printed
+     */
     public void printMessage(String message) {
         System.out.println(message);
     }
