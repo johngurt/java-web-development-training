@@ -16,9 +16,15 @@ public class View {
     public static final String ATTEMPTS = "They were: ";
     public static final String START_INTERVAL = "Program could make a number between %s and %s";
 
-
-    public void printMessageWithTwoNumbers(String message, int min, int max) {
-        System.out.printf(message, min, max);
+    /**
+     * This method used to write str
+     *
+     * @param message
+     * @param first
+     * @param second
+     */
+    public void printMessageWithTwoNumbers(String message, int first, int second) {
+        System.out.printf(message, first, second);
         System.out.println();
     }
 
