@@ -1,7 +1,7 @@
 package training.gamelessormore;
 
 /**
- * Class that is entry point to programm
+ * Class that is entry point to program
  *
  * @author Hurt Yevhenii
  */

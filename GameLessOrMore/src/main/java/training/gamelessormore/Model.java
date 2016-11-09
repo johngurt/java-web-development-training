@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
+ * Class that represents business logic of program
+ *
  * @author Hurt Yevhenii
  */
 public class Model {
@@ -11,28 +13,28 @@ public class Model {
     /**
      * initial left boundary, unknown number is more than it
      */
-    private final int MIN_RAND;
+    private int initialMin;
     /**
      * initial right boundary, unknown number is less than it
      */
-    private final int MAX_RAND;
+    private int initialMax;
 
     /**
      * current left boundary, unknown number is always more than it,
-     * in the beginning of program it is equal to MIN_RAND
+     * in the beginning of program it is equal to initialMin
      * and can changes during execution of program
      */
     private int currentMinNumber;
     /**
      * current right boundary, unknown number is always less than it,
-     * in the beginning of program it is equal to MAX_RAND
+     * in the beginning of program it is equal to initialMax
      * and can changes during execution of program
      */
     private int currentMaxNumber;
     /**
      * Number that player tries to guess.
-     * It always more than MIN_RAND and currentMinNumber
-     * and less than MAX_RAND and currentMaxNumber
+     * It always more than initialMin and currentMinNumber
+     * and less than initialMax and currentMaxNumber
      */
     private int unknownNumber;
     /**
@@ -46,29 +48,6 @@ public class Model {
     private ArrayList<Integer> playersAttempts = new ArrayList<Integer>();
 
     Random rand = new Random();
-
-
-    /**
-     * Default constructor
-     */
-    Model() {
-        this.MIN_RAND = 0;
-        this.MAX_RAND = 100;
-        currentMinNumber = MIN_RAND;
-        currentMaxNumber = MAX_RAND;
-    }
-
-    /**
-     * constructor with specified boundaries
-     * @param MIN_RAND left boundary
-     * @param MAX_RAND right boundary
-     */
-    Model(int MIN_RAND, int MAX_RAND) {
-        this.MIN_RAND = MIN_RAND;
-        this.MAX_RAND = MAX_RAND;
-        currentMinNumber = MIN_RAND;
-        currentMaxNumber = MAX_RAND;
-    }
 
     /**
      * method that return true if player guesses unknown number
@@ -92,24 +71,41 @@ public class Model {
      * @return boolean value that is true when number that players enters is not in correct interval
      */
     public boolean isOutOfBoundary(int currentNumber) {
-        return (currentNumber > currentMaxNumber) || (currentNumber < currentMinNumber);
+        return (currentNumber >= currentMaxNumber) || (currentNumber <= currentMinNumber);
     }
 
     /**
      * Method sets number that players tries to guess
      */
     public void setUnknownNumber() {
-        this.unknownNumber = rand.nextInt(MAX_RAND - MIN_RAND - 1) + 1;
+        this.unknownNumber = rand.nextInt(initialMax - initialMin - 1) + 1;
+    }
+
+    /**
+     * Method sets initial value of the left boundary of interval in what unknown number is
+     * @param initialMin initial left boundary0
+     */
+    public void setInitialMin(int initialMin) {
+        this.initialMin = initialMin;
+        this.currentMinNumber = initialMin;
+    }
+    /**
+     * Method sets initial value of the right boundary of interval in what unknown number is
+     * @param initialMax initial right boundary
+     */
+    public void setInitialMax(int initialMax) {
+        this.initialMax = initialMax;
+        this.currentMaxNumber = initialMax;
     }
     /**
      * getters and setters
      */
-    public int getMAX_RAND() {
-        return MAX_RAND;
+    public int getInitialMax() {
+        return initialMax;
     }
 
-    public int getMIN_RAND() {
-        return MIN_RAND;
+    public int getInitialMin() {
+        return initialMin;
     }
 
     public int getCurrentMaxNumber() {

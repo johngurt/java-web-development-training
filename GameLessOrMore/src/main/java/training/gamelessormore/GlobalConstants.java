@@ -1,9 +1,12 @@
 package training.gamelessormore;
 
 /**
- * Created by gurt on 11/8/16.
+ * Interface that contains global values
+ *
+ * @author Hurt Yevhenii
  */
-public class GlobalConstants {
+public interface GlobalConstants {
+    //The constants
     int LEFT_BOUND = 0;
     int RIGHT_BOUND = 100;
 }

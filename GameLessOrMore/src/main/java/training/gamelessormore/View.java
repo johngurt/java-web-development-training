@@ -1,12 +1,15 @@
 package training.gamelessormore;
 
 /**
+ * Class that contains all string constants for interaction with user
+ * and methods that implements information output
+ *
  * @author Hurt Yevhenii
  */
 public class View {
 
     //String constants
-    public static final String INPUT_INT_DATA = "Please input integer value from %s to %s";
+    public static final String INPUT_INT_DATA = "Please input integer value from %s to %s exclusive";
     public static final String WRONG_INPUT = "Wrong input!";
     public static final String GREATER_THAN = "Unknown number is more";
     public static final String LESS_THAN = "Unknown number is less";
@@ -14,7 +17,7 @@ public class View {
     public static final String NUMBER_OF_ATTEMPTS = "You took %s attempts";
     public static final String UNKNOWN_NUMBER = "Unknown number was %s";
     public static final String ATTEMPTS = "They were: ";
-    public static final String START_INTERVAL = "Program could make a number between %s and %s";
+    public static final String START_INTERVAL = "Program could make a number between %s and %s exclusive";
 
     /**
      * Prints string with two numbers that passed as arguments
