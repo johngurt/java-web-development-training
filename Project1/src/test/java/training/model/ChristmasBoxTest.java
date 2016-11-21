@@ -1,11 +1,14 @@
 package training.model;
 
-import junit.framework.TestCase;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import training.initialize.Initialization;
 
 import java.util.ArrayList;
 import java.util.function.Predicate;
+
+import static training.initialize.Initialization.*;
 
 /**
  * Christmas box model test class
@@ -13,16 +16,9 @@ import java.util.function.Predicate;
  *
  * @author Hurt Yevhenii
  */
-public class ChristmasBoxTest extends TestCase {
+public class ChristmasBoxTest {
 
-    private ArrayList<Sweets> content = new ArrayList<Sweets>() {{
-        add(new ChocolateCandies("Jack", "Konti", 50, 62, ChocolateType.BLACK));
-        add(new ChocolateCandies("Snackfood", "Mars", 88, 48, ChocolateType.MILK));
-        add(new ChocolateCandies("Truffles", "Lindor", 200, 55, ChocolateType.WHITE));
-        add(new Pastry("Croissant", "Kulinichi", 120, 11, TypeOfFlour.WHITE));
-        add(new Pastry("Strudel", "Wrights", 100, 25, TypeOfFlour.WHOLE_WHEAT));
-        add(new Pastry("Puff", "Baker Street", 125, 13, TypeOfFlour.WHITE_WITH_GERM));
-    }};
+    private ArrayList<Sweets> content;
 
     private int totalWeight;
 
@@ -39,80 +35,85 @@ public class ChristmasBoxTest extends TestCase {
 
     @Before
     public void setUp() {
+        content = new ArrayList<>();
+        for(Initialization sweet : Initialization.values()) {
+            content.add(sweet.getSweets());
+        }
+
         christmasBox = new ChristmasBox("John", content);
         totalWeight = 683;
 
         sortedByName = new ArrayList<>();
-        sortedByName.add(content.get(3));
-        sortedByName.add(content.get(0));
-        sortedByName.add(content.get(5));
-        sortedByName.add(content.get(1));
-        sortedByName.add(content.get(4));
-        sortedByName.add(content.get(2));
+        sortedByName.add(D.getSweets());
+        sortedByName.add(A.getSweets());
+        sortedByName.add(F.getSweets());
+        sortedByName.add(B.getSweets());
+        sortedByName.add(E.getSweets());
+        sortedByName.add(C.getSweets());
 
         sortedByManufacturer = new ArrayList<>();
-        sortedByManufacturer.add(content.get(5));
-        sortedByManufacturer.add(content.get(0));
-        sortedByManufacturer.add(content.get(3));
-        sortedByManufacturer.add(content.get(2));
-        sortedByManufacturer.add(content.get(1));
-        sortedByManufacturer.add(content.get(4));
+        sortedByManufacturer.add(F.getSweets());
+        sortedByManufacturer.add(A.getSweets());
+        sortedByManufacturer.add(D.getSweets());
+        sortedByManufacturer.add(C.getSweets());
+        sortedByManufacturer.add(B.getSweets());
+        sortedByManufacturer.add(E.getSweets());
 
         sortedByWeight = new ArrayList<>();
-        sortedByWeight.add(content.get(0));
-        sortedByWeight.add(content.get(1));
-        sortedByWeight.add(content.get(4));
-        sortedByWeight.add(content.get(3));
-        sortedByWeight.add(content.get(5));
-        sortedByWeight.add(content.get(2));
+        sortedByWeight.add(A.getSweets());
+        sortedByWeight.add(B.getSweets());
+        sortedByWeight.add(E.getSweets());
+        sortedByWeight.add(D.getSweets());
+        sortedByWeight.add(F.getSweets());
+        sortedByWeight.add(C.getSweets());
 
         sortedBySugar = new ArrayList<>();
-        sortedBySugar.add(content.get(3));
-        sortedBySugar.add(content.get(5));
-        sortedBySugar.add(content.get(4));
-        sortedBySugar.add(content.get(1));
-        sortedBySugar.add(content.get(2));
-        sortedBySugar.add(content.get(0));
+        sortedBySugar.add(D.getSweets());
+        sortedBySugar.add(F.getSweets());
+        sortedBySugar.add(E.getSweets());
+        sortedBySugar.add(B.getSweets());
+        sortedBySugar.add(C.getSweets());
+        sortedBySugar.add(A.getSweets());
 
         sweetsInInterval = new ArrayList<>();
-        sweetsInInterval.add(content.get(1));
-        sweetsInInterval.add(content.get(2));
-        sweetsInInterval.add(content.get(4));
+        sweetsInInterval.add(B.getSweets());
+        sweetsInInterval.add(C.getSweets());
+        sweetsInInterval.add(E.getSweets());
 
         interval = i -> (i.getSugarConcentration() >= 20 && i.getSugarConcentration() <= 60);
     }
 
     @Test
     public void testGetTotalWeight() throws Exception {
-        assertEquals(totalWeight, christmasBox.getTotalWeight());
+        Assert.assertEquals(totalWeight, christmasBox.getTotalWeight());
     }
 
     @Test
     public void testSortChristmasBoxByName() throws Exception {
         christmasBox.sortChristmasBox(SortBy.BY_NAME);
-        assertEquals(sortedByName, christmasBox.getContentOfBox());
+        Assert.assertEquals(sortedByName, christmasBox.getContentOfBox());
     }
 
     @Test
     public void testSortChristmasBoxByManufacturer() throws Exception {
         christmasBox.sortChristmasBox(SortBy.BY_MANUFACTURER);
-        assertEquals(sortedByManufacturer, christmasBox.getContentOfBox());
+        Assert.assertEquals(sortedByManufacturer, christmasBox.getContentOfBox());
     }
 
     @Test
     public void testSortChristmasBoxByWeight() throws Exception {
         christmasBox.sortChristmasBox(SortBy.BY_WEIGHT);
-        assertEquals(sortedByWeight, christmasBox.getContentOfBox());
+        Assert.assertEquals(sortedByWeight, christmasBox.getContentOfBox());
     }
 
     @Test
     public void testSortChristmasBoxBySugar() throws Exception {
         christmasBox.sortChristmasBox(SortBy.BY_SUGAR_CONCENTRATION);
-        assertEquals(sortedBySugar, christmasBox.getContentOfBox());
+        Assert.assertEquals(sortedBySugar, christmasBox.getContentOfBox());
     }
 
     @Test
     public void testFindSweetsInInterval() throws Exception {
-        assertEquals(sweetsInInterval, christmasBox.findSweetsInInterval(interval));
+        Assert.assertEquals(sweetsInInterval, christmasBox.findSweetsInInterval(interval));
     }
 }

@@ -1,5 +1,6 @@
 package training.controller;
 
+import training.initialize.Initialization;
 import training.model.*;
 import training.view.View;
 
@@ -84,7 +85,7 @@ public class Controller {
         view.printMessage(christmasBox.printContentOfBox(christmasBox.findSweetsInInterval(interval)));
     }
 
-    private List<Sweets> initialData() {
+    /*  private List<Sweets> initialData() {
         List<Sweets> result = new ArrayList<>();
         result.add(new ChocolateCandies("Jack", "Konti", 50, 62, ChocolateType.BLACK));
         result.add(new ChocolateCandies("Snackfood", "Mars", 88, 48, ChocolateType.MILK));
@@ -92,6 +93,14 @@ public class Controller {
         result.add(new Pastry("Croissant", "Kulinichi", 120, 11, TypeOfFlour.WHITE));
         result.add(new Pastry("Strudel", "Wrights", 100, 25, TypeOfFlour.WHOLE_WHEAT));
         result.add(new Pastry("Puff", "Baker Street", 125, 13, TypeOfFlour.WHITE_WITH_GERM));
+        return result;
+    }*/
+
+    private List<Sweets> initialData() {
+        List<Sweets> result = new ArrayList<>();
+        for(Initialization sweet : Initialization.values()) {
+            result.add(sweet.getSweets());
+        }
         return result;
     }
 }
