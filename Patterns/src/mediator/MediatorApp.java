@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by gurt on 11/27/16.
+ * @author Hurt Yevhenii
  */
 public class MediatorApp {
     public static void main(String[] args) {
