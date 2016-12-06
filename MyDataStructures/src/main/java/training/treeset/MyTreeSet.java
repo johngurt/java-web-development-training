@@ -62,6 +62,9 @@ public class MyTreeSet<E extends Comparable> {
         if (e == null) {
             return false;
         }
+        if (root.data == e && root.left == null && root.right == null) {
+            root = null;
+        }
         if (!contains(e)) {
             return false;
         } else {
@@ -112,7 +115,7 @@ public class MyTreeSet<E extends Comparable> {
         }
     }
 
-    private Node findNodeByValue(E e) {
+    Node findNodeByValue(E e) {
         if (e == null) {
             return null;
         }
@@ -134,7 +137,7 @@ public class MyTreeSet<E extends Comparable> {
         return null;
     }
 
-    private Node<E> findParentByValue(E e) {
+    Node<E> findParentByValue(E e) {
         Node<E> parent = null;
         Node<E> current = root;
         while (current != null) {
